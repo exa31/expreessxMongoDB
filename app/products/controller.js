@@ -24,7 +24,7 @@ const show = async (req, res) => {
 
 const store = async (req, res) => {
     try {
-        const product = Product.create(req.body);
+        const product = await Product.create(req.body);
         res.status(201).json({ message: 'Product created successfully' });
     } catch (error) {
         console.log(error.message);
