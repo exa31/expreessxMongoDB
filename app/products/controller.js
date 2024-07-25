@@ -11,6 +11,17 @@ const index = async (req, res) => {
     }
 }
 
+const show = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const product = await Product.findById(id);
+        res.status(200).json({ message: 'Product updated successfully' });
+    } catch (error) {
+        console.log(error.message);
+        res.status(400).json({ message: error.message });
+    }
+}
+
 const store = async (req, res) => {
     try {
         const product = new Product(req.body);
@@ -65,5 +76,6 @@ module.exports = {
     store,
     update,
     destroy,
-    search
+    search,
+    show
 }
