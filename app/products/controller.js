@@ -15,7 +15,7 @@ const show = async (req, res) => {
     try {
         const id = req.params.id;
         const product = await Product.findById(id);
-        res.status(200).json({ message: 'Product updated successfully' });
+        res.json(product);
     } catch (error) {
         console.log(error.message);
         res.status(400).json({ message: error.message });
