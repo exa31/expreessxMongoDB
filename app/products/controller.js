@@ -36,7 +36,7 @@ const store = async (req, res) => {
 const update = async (req, res) => {
     try {
         const id = req.params.id;
-        const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
+        const product = await Product.findByIdAndUpdate(id, { $set: req.body }, { runValidators: true, new: true });
         res.status(200).json({ message: 'Product updated successfully' });
     } catch (error) {
         console.log(error.message);
