@@ -4,6 +4,7 @@ const app = express();
 const override = require('method-override');
 const router = require('./app/products/routes');
 const path = require('path');
+const cors = require('cors');
 
 
 
@@ -14,6 +15,7 @@ const path = require('path');
 //     console.log('Failed to connect to MongoDB', err);
 // });
 
+app.use(cors());
 app.use(override('_method'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
