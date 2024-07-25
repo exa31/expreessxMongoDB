@@ -14,6 +14,6 @@ router.patch("/product/:id", controllerProducts.update);
 
 router.get("/products/search", controllerProducts.search);
 
-router.delete("/products/api/:id", controllerProducts.destroy);
+router.delete("/product/:id", controllerProducts.destroy);
 
 module.exports = router;
