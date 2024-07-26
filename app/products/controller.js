@@ -49,7 +49,7 @@ const search = async (req, res) => {
         const regex = new RegExp(query, 'i'); // Membuat regex dinamis dengan opsi 'i'
         const product = await Product.find({
             $or: [
-                { name: { $regex: regex } },
+                { title: { $regex: regex } },
                 { description: { $regex: regex } }
             ]
         }); // Mencari product berdasarkan nama atau deskripsi
