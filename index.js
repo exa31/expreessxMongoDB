@@ -3,8 +3,10 @@ const express = require('express');
 const app = express();
 const override = require('method-override');
 const router = require('./app/products/routes');
+const routerNative = require('./app/productNative/routes');
 const path = require('path');
 const cors = require('cors');
+const morgan = require('morgan');
 
 
 
@@ -16,6 +18,7 @@ const cors = require('cors');
 // });
 
 app.use(cors());
+app.use(morgan('dev'));
 app.use(override('_method'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,6 +27,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use("/", router);
+app.use("/api/native", routerNative);
 
 
 
